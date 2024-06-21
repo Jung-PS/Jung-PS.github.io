@@ -27,7 +27,7 @@ var applePayController = (function (uiController) {
     },
     shop: {
       product_price: 5470,
-      shop_name: 'Demo Shop',
+      shop_name: 'The Best Steakhouse',
       shop_localisation: {
         currencyCode: 'THB',
         countryCode: 'US'
