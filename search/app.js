@@ -29,8 +29,8 @@ var applePayController = (function (uiController) {
       product_price: 5470,
       shop_name: 'Demo Shop',
       shop_localisation: {
-        currencyCode: 'GBP',
-        countryCode: 'GB'
+        currencyCode: 'THB',
+        countryCode: 'US'
       }
     }
   }
