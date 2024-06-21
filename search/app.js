@@ -28,11 +28,35 @@ var applePayController = (function (uiController) {
     },
     shop: {
       product_price: 5470,
-      shop_name: 'The Best Steakhouse',
+      shop_name: 'Demo Shop',
       shop_localisation: {
         currencyCode: 'THB',
-        countryCode: 'US'
+        countryCode: 'GB'
       }
+    },
+    shipping: {
+      GB_region: [
+        {
+          label: 'Free Shipping',
+          amount: '0.00',
+          detail: 'Arrives in 3-5 days',
+          identifier: 'freeShipping'
+        },
+        {
+          label: 'Express Shipping',
+          amount: '5.00',
+          detail: 'Arrives in 1-2 days',
+          identifier: 'expressShipping'
+        }
+      ],
+      WORLDWIDE_region: [
+        {
+          label: 'Worldwide Standard Shipping',
+          amount: '10.00',
+          detail: 'Arrives in 5-8 days',
+          identifier: 'worldwideShipping'
+        }
+      ]
     }
   }
   /**
@@ -89,10 +113,17 @@ var applePayController = (function (uiController) {
    * @return {Array} An array of shipping methods
    *
    */
-
+  var _getAvailableShippingMethods = function (region) {
+    // return the shipping methods available based on region
+    if (region === 'GB') {
+      return { methods: config.shipping.GB_region }
+    } else {
+      return { methods: config.shipping.WORLDWIDE_region }
+    }
+  }
 
   var _calculateTotal = function (subtotal, shipping) {
-    return (parseFloat(subtotal)).toFixed(2)
+    return (parseFloat(subtotal) + parseFloat(shipping)).toFixed(2)
   }
 
   // here we talk to our backend to send the Apple Pay Payload and return the transaction outcome
@@ -138,6 +169,9 @@ var applePayController = (function (uiController) {
     appleSession.onshippingcontactselected = function (event) {
       // populate with the availbale shipping methods for the region (Apple will tell you the region).
       // while the full address will only be available to you after the user confirms tha payment
+      var shipping = _getAvailableShippingMethods(
+        config.shop.shop_localisation.countryCode
+      )
       // Update total and line items based on the shipping methods
       var newTotal = {
         type: 'final',
@@ -152,6 +186,11 @@ var applePayController = (function (uiController) {
           type: 'final',
           label: 'Subtotal',
           amount: config.shop.product_price
+        },
+        {
+          type: 'final',
+          label: shipping.methods[0].label,
+          amount: shipping.methods[0].amount
         }
       ]
       appleSession.completeShippingContactSelection(
@@ -164,6 +203,33 @@ var applePayController = (function (uiController) {
 
     // This method is triggered when a user select one of the shipping options.
     // Here you generally want to keep track of the transaction amount
+    appleSession.onshippingmethodselected = function (event) {
+      var newTotal = {
+        type: 'final',
+        label: config.shop.shop_name,
+        amount: _calculateTotal(
+          config.shop.product_price,
+          event.shippingMethod.amount
+        )
+      }
+      var newLineItems = [
+        {
+          type: 'final',
+          label: 'Subtotal',
+          amount: config.shop.product_price
+        },
+        {
+          type: 'final',
+          label: event.shippingMethod.label,
+          amount: event.shippingMethod.amount
+        }
+      ]
+      appleSession.completeShippingMethodSelection(
+        ApplePaySession.STATUS_SUCCESS,
+        newTotal,
+        newLineItems
+      )
+    }
 
     // This method is the most important method. It gets triggered after the user has
     // confirmed the transaction with the Touch ID or Face ID. Besides getting all the
@@ -200,7 +266,24 @@ var applePayController = (function (uiController) {
             'supportsDebit'
           ],
           supportedNetworks: config.payments.acceptedCardSchemes,
-        
+          shippingType: 'shipping',
+          requiredBillingContactFields: [
+            'postalAddress',
+            'name',
+            'phone',
+            'email'
+          ],
+          requiredShippingContactFields: [
+            'postalAddress',
+            'name',
+            'phone',
+            'email'
+          ],
+          total: {
+            label: config.shop.shop_name,
+            amount: config.shop.product_price,
+            type: 'final'
+          }
         })
       })
   }
