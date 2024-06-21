@@ -27,36 +27,12 @@ var applePayController = (function (uiController) {
       acceptedCardSchemes: ['amex', 'masterCard', 'maestro', 'visa', 'mada']
     },
     shop: {
-      product_price: 10.0,
-      shop_name: 'Demo Shop',
+      product_price: 5470,
+      shop_name: 'The Best Steakhouse',
       shop_localisation: {
-        currencyCode: 'GBP',
-        countryCode: 'GB'
+        currencyCode: 'THB',
+        countryCode: 'US'
       }
-    },
-    shipping: {
-      GB_region: [
-        {
-          label: 'Free Shipping',
-          amount: '0.00',
-          detail: 'Arrives in 3-5 days',
-          identifier: 'freeShipping'
-        },
-        {
-          label: 'Express Shipping',
-          amount: '5.00',
-          detail: 'Arrives in 1-2 days',
-          identifier: 'expressShipping'
-        }
-      ],
-      WORLDWIDE_region: [
-        {
-          label: 'Worldwide Standard Shipping',
-          amount: '10.00',
-          detail: 'Arrives in 5-8 days',
-          identifier: 'worldwideShipping'
-        }
-      ]
     }
   }
   /**
