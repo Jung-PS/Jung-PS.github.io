@@ -1,7 +1,7 @@
 
 
 .apple-pay-button {
-	width: 250px;
+	width: 225px;
 	height: 40px;
 	display: inline-block;
 	-webkit-appearance: -apple-pay-button;
@@ -40,11 +40,3 @@
 	-apple-pay-button-type: donate;
 }
 
-/* For mobile devices */
-
-@media only screen and (max-width: 600px) {
-	.apple-pay-button {
-		width: 90%;
-		height: 50px;
-	}
-}
