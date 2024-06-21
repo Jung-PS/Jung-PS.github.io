@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Steakhouse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+}
+
+header {
+    background-color: #1c1c1c;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #f5a623;
+}
+
+main {
+    padding: 20px;
+}
+
+.menu {
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.menu h2 {
+    text-align: center;
+    color: #f5a623;
+}
+
+.menu-item {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #3c3c3c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-item img {
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu-item-info {
+    margin-left: 20px;
+}
+
+.menu-item-info h3 {
+    margin-top: 0;
+    color: #f5a623;
+}
+
+.menu-item2 {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #3c3c3c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-item2 img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu-item2-info {
+    margin-left: 20px;
+}
+
+.menu-item2-info h3 {
+    margin-top: 0;
+    color: #f5a623;
+}
+</style>
+
+<style>
+    /* The container */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default checkbox */
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+    
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+      background-color: #2196F3;
+    }
+    
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #04AA6D;
+}
+
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+    </style>
+<body>
+    <header>
+        <h1>The Best Steakhouse</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <h2>Order with checkbox</h2>
+            <h3>Chef recommendation</h2>
+            <div class="menu-item">
+                <img src="https://images.food52.com/2vWtXC2QOMsXpoJh7u81ELx7KvE=/1200x1200/1281c5b8-f304-4a92-886a-bc77b302c5e8--2018-0524_beef-tenderloin-with-black-truffle-sauce_3x2_james-ransom-193.jpg" alt="Ribeye Steak">
+                <div class="menu-item-info">
+                    <h2>Japanese A5 wagyu with black truffle sauce and cavier 2000THB</h2>
+                    <p>Japanese A5 Wagyu, known for its incredibly marbled texture and melt-in-your-mouth tenderness, is carefully seared to bring out its rich flavors. Drizzled with a luxurious black truffle sauce that adds a deep, earthy taste, each bite is a blend of savory goodness. Topped with delicate caviar, the dish offers a luxurious twist with bursts of salty flavor, making every bite a delightfully decadent experience.
+                    </p>
+                </div>
+                <label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                
+
+            </div>
+            <div class="menu-item">
+                <img src="https://cafedelites.com/wp-content/uploads/2020/05/AA5AE329-7B1D-48F4-98DE-4A45655A4323.jpeg" alt="Ribeye Steak">
+                <div class="menu-item-info">
+                    <h2>Grilled lobster tail 1000THB</h2>
+                    <p>Grilled lobster tail is a tasty seafood treat. The tail is split open and cooked on a grill until tender and juicy. This method brings out its natural sweetness and adds a smoky flavor. It's often served with melted butter and lemon for a rich and delicious meal that seafood lovers enjoy.
+                    </p>
+                </div>
+                <label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Foie_gras_en_cocotte.jpg" alt="Ribeye Steak">
+                <div class="menu-item-info">
+                    <h2>Foie gras 1000THB</h2>
+                    <p>Foie gras is a gourmet food made from the liver of ducks or geese that have been specially fattened. It's known for its rich, buttery texture and delicate flavor. Foie gras is often served as a luxurious appetizer or in fine dining dishes, where its smooth consistency and luxurious taste make it a sought-after delicacy.
+                    </p>
+                </div>
+                <label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+            <h3>Beef</h3>
+                <div class="menu-item2">
+                    <img src="https://thebigmansworld.com/wp-content/uploads/2023/07/sirloin-steak.jpg" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Angus Serloin steak 270THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                <div class="menu-item2">
+                    <img src="https://www.maryswholelife.com/wp-content/uploads/2023/12/Air-Fryer-Ribeye-Steak-03-scaled.jpg" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Ribeye steak 350THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                <div class="menu-item2">
+                    <img src="https://www.foodandwine.com/thmb/2k2Kq24_fMvHCyLMPRSNrpg5QdE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/beef-wellington-FT-RECIPE0321-c9a63fccde3b45889ad78fdad078153f.jpg" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Beef Wellington 550THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+            <h3>Fish</h3>
+                <div class="menu-item2">
+                    <img src="https://simplehomeedit.com/wp-content/uploads/2020/01/Homemade-Fish-and-Chips-Recipe.webp" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Fish and Chips 200THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                <div class="menu-item2">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/delish-how-to-cook-salmon-steak-horizontal-1543605929.jpg?crop=0.668xw:1.00xh;0.136xw,0&resize=1200:*" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Salmon Steak 200THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                
+                <h3>Drinks</h3>
+                <div class="menu-item2">
+                    <img src="https://www.spiceupthecurry.com/wp-content/uploads/2022/03/strawberry-juice-1.jpg" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Strawberry Juice 50THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                <div class="menu-item2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Orangejuice.jpg/1200px-Orangejuice.jpg" alt="Ribeye Steak">
+                    <div class="menu-item-info">
+                        <h2>Orange Juice 50THB</h2>
+
+                    </div>
+                    <label class="container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                </div>
+                <a href="selfrecieve.html">
+                <button class="button button2">Confirm Order</button>
+                </a>
+
+
+        </section>
+    </main>
+</body>
+</html>
