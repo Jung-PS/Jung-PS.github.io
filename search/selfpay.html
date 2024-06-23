@@ -240,7 +240,7 @@ main {
         <section class="menu">
             <h1>Please choose option to pay.</h1>
             <h3>Your table #002 Cost : 5470THB</h3>
-            <h4>Pay with Google Pay</h4>
+            <h4>Continue with Google Pay</h4>
 
             <div id="container"></div>
 
@@ -487,13 +487,21 @@ function processPayment(paymentData) {
 
 
 
-  <h4>Pay with Apple Pay</h4>
+  <h4>Continue with Apple Pay</h4>
   <div id="ckoApplePay" class="apple-pay-button apple-pay-button-text-buy" lang=en></div>
   <p style="display:none" id="ckoApplePayError">ApplePay is not available in this environment.</p>
     
   <script src="app.js"></script>
+
+  <h4>Continue with PayPal</h4>
+  <div id="paypal-button-container" style="max-width: 240px;"></div>
+    <p id="result-message"></p>
+    <!-- Replace the "test" client-id value with your client-id -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&components=buttons&enable-funding=paylater,venmo,card" data-sdk-integration-source="integrationbuilder_sc"></script>
+    <script src="paypal.js"></script>
         </section>
-      
+  
+
     </main>
 
     
