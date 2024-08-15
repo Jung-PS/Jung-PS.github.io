@@ -42,9 +42,9 @@ function deleteOut(txtArr, curChar = 0) {
             ModifyTxt(el, newElTxt);
             if (elTxtArrLen == 1) {
                 if(txtFull == "Game Developer "){
-                    txtFull = "Newbie Blender guy ";
+                    txtFull = "Coder ";
                 }
-                else if(txtFull=="Newbie Blender guy "){
+                else if(txtFull=="Coder "){
                     txtFull = "Student ";
                 }
                 else{
