@@ -18,8 +18,8 @@ var applePayUiController = (function () {
 })()
 
 var applePayController = (function (uiController) {
-  var BACKEND_URL_VALIDATE_SESSION = 'https://{your backend URL}/validateSession'
-  var BACKEND_URL_PAY = 'https://{your backend URL}/pay'
+  var BACKEND_URL_VALIDATE_SESSION = 'https://appledemo.apple.com/authorizemerchant'
+  var BACKEND_URL_PAY = 'https://appledemo.apple.com/authorizemerchant'
 
   var config = {
     payments: {
@@ -27,7 +27,7 @@ var applePayController = (function (uiController) {
     },
     shop: {
       product_price: 5470,
-      shop_name: 'The Best Steakhouse',
+      shop_name: 'Get\'s Steakhouse',
       shop_localisation: {
         currencyCode: 'THB',
         countryCode: 'US'
