@@ -22,6 +22,20 @@ body {
     
 </style>
 <body>
+    
+<script>
+var i = 0;
+var txt = 'Lorem ipsum dummy text blabla.';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
     <h1 class="rainbow-text">Hello Mr.JungPS</h1>
     <p> My name is Pitt.I already hack jung website.</p>
 </body>
