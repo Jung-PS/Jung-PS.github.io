@@ -19,24 +19,45 @@ body {
   font-family: courier;
   font-size: 200%;
 }
+    .wrapper {
+  height: 100vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
+
+.text {
+  width: 22ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
     
 </style>
 <body>
     
-<script>
-var i = 0;
-var txt = 'Lorem ipsum dummy text blabla.';
-var speed = 50;
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
-</script>
     <h1 class="rainbow-text">Hello Mr.JungPS</h1>
+   <div class="wrapper">
+    <div class="typing-demo">
+      This is a typing demo.
+    </div>
+</div>
+    
     <p> My name is Pitt.<br>I already hack jung website.</p>
 </body>
 </html>
