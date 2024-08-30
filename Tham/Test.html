@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Tham</title>
+  <meta charset="UTF-8">
+  <title>Tham</title>
 </head>
 <style>
-body {
-  background-color: #000000;
-}
-    
- .rainbow-text {
-  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
-  color: transparent;
- font-size: 500%;
-}
-    .wrapper {
-  height: 100vh;
-  /*This part is important for centering*/
-  display: grid;
-  place-items: center;
-}
-
-.text {
-  width: 22ch;
-  animation: typing 6s steps(22), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: monospace;
-  font-size: 2em;
-  color: red;
-  text-align: left;
-}
-
-@keyframes typing {
-  from {
-    width: 0
+  body {
+    background-color: #000000;
   }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
+
+  .rainbow-text {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 500%;
   }
-}
-    
+
+  .wrapper {
+    height: 100vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+
+  .text {
+    width: 26ch;
+    animation: typing 5s steps(26), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+    color: red;
+    text-align: left;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
 </style>
+
 <body>
-    
-    <h1 class="rainbow-text">Hello Mr.JungPS</h1>
-   <div class="wrapper">
+
+  <h1 class="rainbow-text">Hello Mr.JungPS</h1>
+  <div class="wrapper">
     <div class="text">
       This site has been HACKED.
     </div>
-</div>
+  </div>
 </body>
+
 </html>
