@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0">
+    <title>Youtube</title>
+</head>
+
+<style>
+    /* styles.css */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 0.5px solid gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding-bottom: 10px;
+    z-index: 2;
+}
+
+#youtube-logo-container {
+    margin-left: 75px;
+}
+
+#youtube-logo {
+    width: 100px;
+}
+
+#search-bar {
+    justify-self: center;
+    width: 38vw;
+    margin-top: 15px;
+    height: 25px;
+    padding: 2px;
+    padding-left: 5px;
+}
+
+#icon-container {
+    color: gray;
+    margin-top: 15px;
+    cursor: pointer;
+    justify-self: flex-end;
+    margin-right: 5px;
+}
+
+.fas {
+    font-size: 20px;
+}
+
+#app-icon {
+    transform: translateY(5px);
+    font-size: 20px;
+}
+
+#side-bar-section {
+    margin-left: 0;
+    position: fixed;
+    left: 0%;
+    width: 250px;
+    float: left;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+#side-bar-section>div {
+    margin-bottom: 30px;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    padding-left: 0;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+.side-bar>li {
+    list-style-type: none;
+    margin-bottom: 20px;
+    position: relative;
+    box-sizing: border-box;
+    width: calc(250px - 20px);
+    padding-left: 20px;
+    height: 25px;
+}
+
+#active-title {
+    background: rgba(188, 195, 204, 0.5);
+    height: 40px;
+    display: flex;
+    margin-bottom: 20px;
+    left: 0%;
+    align-items: center;
+}
+
+.material-icons {
+    color: rgb(99, 95, 94);
+}
+
+#home-icon {
+    color: red;
+}
+
+.side-bar-titles {
+    text-decoration: none;
+    color: rgb(53, 50, 49);
+    font-size: 15px;
+    position: absolute;
+    top: 5%;
+    left: 35%;
+}
+
+.active {
+    position: absolute;
+    top: auto;
+    left: 35%;
+    font-weight: bold;
+}
+
+.fa-clock,
+.fa-thumbs-up {
+    color: rgb(99, 95, 94);
+}
+
+i {
+    color: rgb(99, 95, 94);
+    font-size: 18px;
+}
+
+.side-bar-heading {
+    color: rgb(99, 95, 94);
+    font-weight: bold;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.channel-dp-container-1 {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    justify-self: flex-start;
+}
+
+.channel-dp-1 {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+}
+
+#video-section {
+    margin: 20px 5px 0 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 255px;
+    margin-top: 60px;
+    padding-top: 20px;
+}
+
+.video-container {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.images {
+    width: 295px;
+    height: 175px;
+    margin-bottom: 5px;
+}
+
+.video-description {
+    display: flex;
+    flex-direction: row;
+}
+
+.channel-dp-container-2 {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    justify-self: flex-start;
+}
+
+.channel-dp-2 {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.video-details {
+    width: 200px;
+    margin-top: 3px;
+    margin-left: 10px;
+    justify-self: flex-end;
+}
+
+.video-title {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.channel-name {
+    color: rgb(99, 95, 94);
+    text-decoration: none;
+    display: block;
+    margin-top: 5px;
+}
+
+.channel-name:hover {
+    color: rgb(53, 50, 49);
+}
+
+.views {
+    color: rgb(99, 95, 94);
+    text-decoration: none;
+}
+
+.fa-circle {
+    color: rgb(99, 95, 94);
+    font-size: 2px;
+    transform: translateY(-3px);
+}
+
+.time {
+    text-decoration: none;
+    color: rgb(99, 95, 94);
+}
+
+footer p {
+    text-align: right;
+    color: rgb(99, 95, 94);
+    margin-right: 20px;
+}
+
+@media all and (max-width: 255px) {
+    .video-description {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media all and (max-width: 300px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    #search-bar {
+        order: 1;
+        flex: 1 1 100%;
+        justify-self: center;
+    }
+}
+
+@media all and (max-width: 315px) {
+    .images {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 550px) {
+    #side-bar-section {
+        display: none;
+    }
+
+    #video-section {
+        margin-left: 0;
+    }
+
+    #youtube-logo-container {
+        margin-left: 0;
+    }
+}
+</style>
+<body>
+    <nav>
+        <div id="youtube-logo-container"></div>
+        <input type="text"
+               placeholder="Search JungTube"
+               id="search-bar">
+        <div id="icon-container">
+            <i class="material-icons"
+               id="app-icon">&#xe5c3;
+            </i>
+            <i class="fas fa-bell"></i>
+        </div>
+    </nav>
+    <section id="side-bar-section">
+        <div>
+            <ul class="side-bar">
+                <li id="active-title">
+                    <a href="#" 
+                       class="side-bar-titles active">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Explore
+                    </a>
+                </li>
+                <li>
+
+                    </i>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Subscriptions
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class="side-bar">
+                <li>
+
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Library
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="side-bar-titles">
+                        History
+                    </a>
+                </li>
+                <li>
+
+                    <a href="#"
+                       class="side-bar-titles">
+                        Your videos
+                    </a>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Watch later
+                    </a>
+                </li>
+                <li>
+                    <i class='fas fa-thumbs-up'></i>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Liked videos
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p class="side-bar-heading">
+                SUBSCRIPTIONS
+            </p>
+            <ul class="side-bar">
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://yt3.googleusercontent.com/Lb1kILuvEvHDjAjyTikR8fcjJGVYBi6QQiS2iafaD1HuUXE5eUWCj-EW1Y1eDUTAxi7jlhIqdiE=s160-c-k-c0x00ffffff-no-rj"
+                            class="channel-dp-1">
+                    </div>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Yee HistoYee
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151313/dm9.webp"
+                            class="channel-dp-1">
+                    </div>
+                    <a href="#"
+                       class="side-bar-titles">
+                        The Puzzle World
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+
+                    </div>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Sports Daily
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150906/dm5.jpeg"
+                             class="channel-dp-1">
+                    </div>
+                    <a href="#" class="side-bar-titles">
+                        Rick Sorkin
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg"
+                            class="channel-dp-1">
+                    </div>
+                    <a href="#" class="side-bar-titles">
+                        Android Daily
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150542/dm2.webp"
+                             class="channel-dp-1">
+                    </div>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Mike Miller
+                    </a>
+                </li>
+                <li>
+                    <div class="channel-dp-container-1">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150700/dm4.webp"
+                             class="channel-dp-1">
+                    </div>
+                    <a href="#" class="side-bar-titles">
+                        Best Tips
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p class="side-bar-heading">
+                MORE FROM YOUTUBE
+            </p>
+            <ul class="side-bar">
+                <li>
+                    <i class='fab fa-youtube'></i>
+                    <a href="#"
+                       class="side-bar-titles">
+                        YouTube Premium
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Films
+                    </a>
+                </li>
+                <li>
+                    <i class="fa fa-gamepad"></i>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Gaming
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Live
+                    </a>
+                </li>
+                <li>
+                    <i class='fas fa-lightbulb'></i>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Learning
+                    </a>
+                </li>
+                <li>
+                    <i class='fas fa-trophy'></i>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Sport
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class="side-bar">
+                <li>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Settings
+                    </a>
+                </li>
+                <li>
+                    <i class='fas fa-flag'></i>
+                    <a href="#" 
+                       class="side-bar-titles">
+                        Report history
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Help
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="side-bar-titles">
+                        Send feedback
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <main id="video-section">
+        <div class="video-container">
+            <img src=
+"https://www.mcafee.com/learn/wp-content/uploads/2022/12/3.gif"
+                 id="image-1"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" 
+                       class="video-title">
+                        Website introduction
+                    </a>
+                    <a href="#"
+                       class="channel-name">
+                        Android Daily
+                    </a>
+                    <a href="#" 
+                       class="views">
+                        2M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#"
+                       class="time">
+                        1 week ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229145100/d2.webp"
+                 id="image-2"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150542/dm2.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="https://jungps.me/search/music1.html" 
+                       class="video-title">
+                        ***Top Music 2024***
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Tham
+                    </a>
+                    <a href="#" 
+                       class="views">1K views
+                      </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" 
+                       class="time">2 months ago
+                      </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://www.pcrisk.com/images/stories/screenshots201807/microsoftsupport-gif.gif"
+                 id="image-3"
+                 class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#"
+                       class="video-title">
+                        5 New Features of YouTube
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Android Daily
+                    </a>
+                    <a href="#"
+                       class="views">
+                        2.7K views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" 
+                       class="time">
+                        5 days ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229145328/d4.webp"
+                 id="image-4"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150700/dm4.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#"
+                       class="video-title">
+                        How To Improve Your
+                        YouTube Recommendations
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Best Tips
+                    </a>
+                    <a href="#"
+                       class="views">
+                        3K views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#"
+                       class="time">
+                        3 days ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://image.space.rakuten.co.jp/d/strg/ctrl/9/8b0b45308d4413ed625fa1a62011e800d9e85d54.90.9.9.3.gif"
+                 id="image-5"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150906/dm5.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#"
+                       class="video-title">
+                        How to register for website.
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Rick Sorkin
+                    </a>
+                    <a href="#" 
+                       class="views">
+                        5M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" class="time">1 year ago</a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229145459/d6.webp"
+                 id="image-6"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151052/dm6.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#"
+                       class="video-title">
+                        15 Photography Tips for Beginners
+                    </a>
+                    <a href="#"
+                       class="channel-name">
+                        Photography World
+                    </a>
+                    <a href="#" 
+                       class="views">
+                          506 views
+                      </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" 
+                       class="time">
+                          5 weeks ago
+                      </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://img1.picmix.com/output/stamp/normal/7/8/3/6/1916387_e880e.gif"
+                 id="image-7"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151133/dm7.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" 
+                       class="video-title">
+                        David Scott -
+                        Another Year (Official Lyric Video)
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Android Daily
+                    </a>
+                    <a href="#" 
+                       class="views">
+                        500K views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" 
+                       class="time">
+                        1 month ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://cdn.adtidy.org/public/Adguard/Website/Images/seo/en/block_popups/giphy3.gif?mw=1360"
+                 id="image-8"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151222/dm8.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" class="video-title">
+                        5 Popular Sports Right Now
+                    </a>
+                    <a href="#" class="channel-name">
+                        Sports Daily
+                    </a>
+                    <a href="#" class="views">
+                        2K views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" class="time">
+                        5 weeks ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229145824/d9.webp"
+                 id="image-9"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151313/dm9.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" class="video-title">
+                        Puzzles - Official Trailer (HD)
+                    </a>
+                    <a href="#" class="channel-name">
+                        The Puzzle World
+                    </a>
+                    <a href="#" class="views">
+                        2M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" class="time">
+                        2 months ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229145921/d10.jpeg" 
+                 id="image-10"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151402/dm10.webp"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" class="video-title">
+                        Ania Palmer - Changes (Official Video)
+                    </a>
+                    <a href="#" class="channel-name">
+                        Ania Palmer
+                    </a>
+                    <a href="#" class="views">
+                        1M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" class="time">
+                        5 months ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://www.bloomberg.com/features/2015-click-fraud/img/bannerdivider1.gif" 
+                 id="image-11"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229151436/dm11.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" class="video-title">
+                        Rachel Spectre -
+                        Footsteps (Official Video)
+                    </a>
+                    <a href="#" class="channel-name">
+                        Rachel Spectre
+                    </a>
+                    <a href="#" class="views">
+                        2M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" class="time">
+                        11 months ago
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150111/d12.webp"
+                 id="image-12"
+                class="images">
+            <div class="video-description">
+                <div class="channel-dp-container-2">
+                    <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg"
+                        class="channel-dp-2">
+                </div>
+                <div class="video-details">
+                    <a href="#" 
+                       class="video-title">
+                        Top 5 Android 11 Features
+                    </a>
+                    <a href="#" 
+                       class="channel-name">
+                        Android Daily
+                    </a>
+                    <a href="#" 
+                       class="views">
+                        3M views
+                    </a>
+                    <i class="fas fa-circle"></i>
+                    <a href="#" 
+                       class="time">
+                        1 year ago
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>
+            JungTube
+        </p>
+    </footer>
+</body>
+
+</html>
