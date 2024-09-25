@@ -29,9 +29,8 @@
     transition: width .6s linear;
 }
 
-
 .navbar nav.active{
-    width: max(30vw,400px);
+    width: max(100vw,400px);
 }
 
 .navbar nav ul{
@@ -80,6 +79,15 @@
     top: 10px
 }
 
+.navbar a:hover{
+    transition:opacity 0.1s linear;
+    opacity: 0.5;
+}
+
+.navbar a{
+    transition:opacity 0.1s linear;
+}
+
 .navbar .icon{
     background-color: #fff;
     border: 0;
@@ -110,9 +118,9 @@
 }
 
 .navbar nav.active .icon .line1{
-    transform: rotate(-765deg) translateY(5.5px);
+    transform: rotate(-45deg) translateY(5.5px);
 }
 
 .navbar nav.active .icon .line2{
-    transform: rotate(765deg) translateY(-5.5px);
+    transform: rotate(45deg) translateY(-5.5px);
 }
